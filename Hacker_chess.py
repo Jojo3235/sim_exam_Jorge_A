@@ -37,5 +37,12 @@ def RooksPos(*args):
 def rookMove(r1, numero_casillas):
     np.where(board == r1+numero_casillas)
 
+def rpos(*args):
+    list = []
+    for i in args:
+        posr = RooksPos(i)
+        list.append('{} = {}'.format(i, posr))
+    return list
+
 if __name__ == '__main__':
-    print(RooksPos('r1','R2'))
+    print(rpos('R1', 'R2', 'r1', 'r2'))
