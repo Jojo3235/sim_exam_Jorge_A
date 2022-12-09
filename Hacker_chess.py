@@ -38,4 +38,4 @@ def rookMove(r1, numero_casillas):
     np.where(board == r1+numero_casillas)
 
 if __name__ == '__main__':
-    print(RooksPos('R1', 'r1'))
+    print(RooksPos('r1','R2'))
