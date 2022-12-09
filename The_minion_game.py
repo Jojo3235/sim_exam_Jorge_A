@@ -1,3 +1,11 @@
+def input_string():
+    string = input("Introduce una sucesión de vocales y consonantes: ")
+    try:
+       string = str(string)
+    except ValueError:
+        print("Error: No se ha introducido una letra o combinación de estas.") 
+    return string
+
 def minion_game(string):
     longitud = len(string)
     Kevin = 0
@@ -17,5 +25,5 @@ def minion_game(string):
         print('Draw')
 
 if __name__ == '__main__':
-    s = input("Introduce una subcadena de la palabra 'BANANA': ")
+    s = input_string()
     minion_game(s)
