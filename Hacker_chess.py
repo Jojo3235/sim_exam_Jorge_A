@@ -28,8 +28,8 @@ def rpos(*args):
     return list
 
 def rookMove(r1, numero_casillas):
-    r1 = np.where(board == r1)
     s = str(r1)
+    r1 = np.where(board == r1)
     h = r1[0]
     v = r1[1]
     pos = [h[0], v[0]]
@@ -38,7 +38,7 @@ def rookMove(r1, numero_casillas):
         board[pos[0]][pos[1]] = ' '
     else:
         print('Movimiento no válido')
-    return s
+    return board
 
 if __name__ == '__main__':
     print(rpos('R1', 'R2', 'r1', 'r2'))
