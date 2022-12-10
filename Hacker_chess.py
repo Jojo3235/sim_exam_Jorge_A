@@ -3,38 +3,38 @@
 import numpy as np
 import unittest
 
-piezas = {'P1': '\u2659',
-            'P2': '\u2659',
-            'P3': '\u2659',
-            'P4': '\u2659',
-            'P5': '\u2659',
-            'P6': '\u2659',
-            'P7': '\u2659',
-            'P8': '\u2659',
-            'p1': '\u265F',
-            'p2': '\u265F',
-            'p3': '\u265F',
-            'p4': '\u265F',
-            'p5': '\u265F',
-            'p6': '\u265F',
-            'p7': '\u265F',
-            'p8': '\u265F',
-            'R1': '\u2656',
-            'R2': '\u2656',
-            'r1': '\u265C',
-            'r2': '\u265C', 
-            'N1': '\u2658',
-            'N2': '\u2658', 
-            'n1': '\u265E',
-            'n2': '\u265E', 
-            'B1': '\u2657',
-            'B2': '\u2657', 
-            'b1': '\u265D',
-            'b2': '\u265D', 
-            'Q': '\u2655', 
-            'q': '\u265B', 
-            'K': '\u2654', 
-            'k': '\u265A'
+piezas = {'p1': '\u2659',
+            'p2': '\u2659',
+            'p3': '\u2659',
+            'p4': '\u2659',
+            'p5': '\u2659',
+            'p6': '\u2659',
+            'p7': '\u2659',
+            'p8': '\u2659',
+            'P1': '\u265F',
+            'P2': '\u265F',
+            'P3': '\u265F',
+            'P4': '\u265F',
+            'P5': '\u265F',
+            'P6': '\u265F',
+            'P7': '\u265F',
+            'P8': '\u265F',
+            'r1': '\u2656',
+            'r2': '\u2656',
+            'R1': '\u265C',
+            'R2': '\u265C', 
+            'n1': '\u2658',
+            'n2': '\u2658', 
+            'N1': '\u265E',
+            'N2': '\u265E', 
+            'b1': '\u2657',
+            'b2': '\u2657', 
+            'B1': '\u265D',
+            'B2': '\u265D', 
+            'q': '\u2655', 
+            'Q': '\u265B', 
+            'k': '\u2654', 
+            'K': '\u265A'
             }
 
 #asignar cada pieza a su valor dentro del diccionario
@@ -125,6 +125,11 @@ def detectar_piezas_negras(*args):
     else:
         pass
     return listblack
+
+def pedir_movimiento():
+    pieza = input('¿Qué pieza quieres mover?(Mayusc. para blancas, minusc. para negras), )')
+    casillas = int(input('¿Cuántas casillas quieres mover la pieza?'))
+    return pieza, casillas
 
 if __name__ == '__main__':
     print(pos(R1, R2, r1, r2))
