@@ -127,11 +127,14 @@ def detectar_piezas_negras(*args):
     return listblack
 
 def pedir_movimiento():
-    pieza = input('¿Qué pieza quieres mover?(Mayusc. para blancas, minusc. para negras), )')
-    casillas = int(input('¿Cuántas casillas quieres mover la pieza?'))
-    return pieza, casillas
-
+    while True:
+        pieza = input('¿Qué pieza quieres mover?(Mayusc. para blancas, minusc. para negras, ej: R1): ')
+        if pieza in piezas:
+            casillas = int(input('¿Cuántas casillas quieres mover la pieza?: '))
+            return pieza, casillas
+        else:
+            print('Esa pieza no existe')
+            continue
+        
 if __name__ == '__main__':
-    print(pos(R1, R2, r1, r2))
-    print(Move(Q, 3))
     unittest.main()
