@@ -1,57 +1,50 @@
-import numpy as np
-
-piezas = {'R': '\u265C',
-            'r': '\u2656',
-}
-
-R = piezas['R']
-r = piezas['r']
-
-def pedir_numero(cond):
-    n = int(input('Introduce un número para {}: '.format(cond)))
-    return n
-
-
-def crear_tablero(n):
-    tablero = np.empty((n,n), dtype=str)
-    for i in range(n):
-        for j in range(n):
-            tablero[i][j]=' '
-    return tablero
-
-
-def colocar_torre():
-    n = pedir_numero("definir el tamaño del tablero")
-    tablero = crear_tablero(n)
-    if 0<n-1:
-        for i in range(n):
-            tablero[0][i]=r
-            tablero[1][i]=R
-    else:
-        pass
-    tablero[0][0]=R
-    tablero[1][0]=' '
-    tablero[n-1][0]=r
-    return tablero
-
-#print(colocar_torre())
-def seleccionar_torre(tablero):
-    n = pedir_numero("seleccionar la torre")
-    
-#movimiento de las torres   
-def movimiento_torre(s):
-    tablero = colocar_torre()
-    numero_casillas = pedir_numero("mover la torre")
-    s = str(r)
-    r = tablero[s-1][i]
-    h = r[0]
-    v = r[1]
-    pos = [h[0], v[0]]
-    if pos[0] + numero_casillas < 8:
-        tablero[pos[0] + numero_casillas][pos[1]] = s
-        tablero[pos[0]][pos[1]] = ' '
-    else:
-        print('Movimiento no válido')
-    return tablero
-
-print(movimiento_torre())
+# Leer el tamaño del tablero N y la posición inicial de las torres
+N = int(input())
+pos1 = []
+pos2 = []
+for i in range(N):
+    r1, r2 = map(int, input().split())
+    pos1.append(r1)
+    pos2.append(r2)
+# Determinar si el segundo jugador tiene la ventaja inicial
+has_advantage = False
+for i in range(N):
+    # Si la torre del segundo jugador puede moverse en su primer movimiento,
+    # el segundo jugador tiene la ventaja
+    if pos2[i] < pos1[i]:
+        has_advantage = True
+        break
+# Si el segundo jugador tiene la ventaja, debe elegir la jugada óptima
+# para ganar el juego
+if has_advantage:
+    # Elegir la columna en la que la torre del segundo jugador esté
+    # más abajo que la del primer jugador
+    best_move = -1
+    max_diff = -1
+    for i in range(N):
+        diff = pos1[i] - pos2[i]
+        if diff > max_diff:
+            max_diff = diff
+            best_move = i
+    # Mover la torre del segundo jugador a la fila más alta posible
+    pos2[best_move] = N
+    # Imprimir la posición actual de las torres
+    for i in range(N):
+        print(pos1[i], pos2[i])
+else:
+    # Si el primer jugador tiene la ventaja, debe elegir la jugada óptima
+    # para ganar el juego
+    # Elegir la columna en la que la torre del primer jugador esté
+    # más abajo que la del segundo jugador
+    best_move = -1
+    max_diff = -1
+    for i in range(N):
+        diff = pos2[i] - pos1[i]
+        if diff > max_diff:
+            max_diff = diff
+            best_move = i
+    # Mover la torre del primer jugador a la fila más alta posible
+    pos1[best_move] = N
+    # Imprimir la posición actual de las torres
+    for i in range(N):
+        print(pos1[i], pos2[i])

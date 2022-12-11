@@ -43,7 +43,7 @@ def movimiento_torre(s):
     tablero = colocar_torre()
     numero_casillas = pedir_numero("mover la torre")
     s = str(r)
-    r = tablero[s-1][i]
+    r = tablero[s-1][2]
     h = r[0]
     v = r[1]
     pos = [h[0], v[0]]
