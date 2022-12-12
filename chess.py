@@ -132,10 +132,15 @@ def pedir_movimiento():
         if pieza in piezas:
             casillas = int(input('¿Cuántas casillas quieres mover la pieza?: '))
             return pieza, casillas
-        else:
+        else: 
             print('Esa pieza no existe')
             continue
+
+def main():
+    while True:
+        print(board)
+        pieza, casillas = pedir_movimiento()
+        Move(pieza, casillas)
         
 if __name__ == '__main__':
-    print(board)
-    unittest.main()
+    main()
