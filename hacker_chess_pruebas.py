@@ -16,7 +16,7 @@ def crear_tablero(n):
     tablero = np.empty((n,n), dtype=str)
     for i in range(n):
         for j in range(n):
-            tablero[i][j]=''
+            tablero[i][j]=' '
     return tablero
 
 

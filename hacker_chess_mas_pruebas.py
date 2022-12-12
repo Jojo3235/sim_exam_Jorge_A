@@ -34,13 +34,33 @@ def colocar_torre():
     tablero[n-1][0]=r
     return tablero
 
-#print(colocar_torre())
-def seleccionar_torre(tablero):
-    n = pedir_numero("seleccionar la torre")
-    
+#detectar la posicion de una unica torre blanca
+def seleccionar_torre_blanca(tablero):
+    posicion = []
+    n = pedir_numero("seleccionar la torre blanca")
+    for i in range(len(tablero)):
+        for j in range(len(tablero)):
+            if tablero[i][j] == R:
+                posicion.append([i,j])
+    posicion_n = posicion[n-1]
+    return posicion_n
+
+
+def seleccionar_torre_negra(tablero):
+    posicion = []
+    n = pedir_numero("seleccionar la torre negra")
+    for i in range(len(tablero)):
+        for j in range(len(tablero)):
+            if tablero[i][j] == r:
+                posicion.append([i,j])
+    posicion_n = posicion[n-1]
+    return posicion_n
+
+
 #movimiento de las torres   
-def movimiento_torre(s):
+def movimiento_torre():
     tablero = colocar_torre()
+    seleccionar_torre_blanca(tablero)
     numero_casillas = pedir_numero("mover la torre")
     s = str(r)
     r = tablero[s-1][2]
@@ -54,4 +74,4 @@ def movimiento_torre(s):
         print('Movimiento no válido')
     return tablero
 
-print(movimiento_torre())
+print(seleccionar_torre_negra(colocar_torre()))
