@@ -20,8 +20,7 @@ def crear_tablero(n):
     return tablero
 
 
-def colocar_torre():
-    n = pedir_numero("definir el tamaño del tablero")
+def colocar_torre(n):
     tablero = crear_tablero(n)
     if 0<n-1:
         for i in range(n):
@@ -58,20 +57,64 @@ def seleccionar_torre_negra(tablero):
 
 
 #movimiento de las torres   
-def movimiento_torre():
+def movimiento_torre_blanca(n):
+    n = input('elegir el tamaño del tablero')
     tablero = colocar_torre()
-    seleccionar_torre_blanca(tablero)
+    print(tablero)
+    torre = seleccionar_torre_blanca(tablero)
     numero_casillas = pedir_numero("mover la torre")
-    s = str(r)
-    r = tablero[s-1][2]
-    h = r[0]
-    v = r[1]
-    pos = [h[0], v[0]]
+    h = torre[0]
+    v = torre[1]
+    pos = [h, v]
     if pos[0] + numero_casillas < 8:
-        tablero[pos[0] + numero_casillas][pos[1]] = s
-        tablero[pos[0]][pos[1]] = ' '
+        if tablero[pos[0]+numero_casillas][pos[1]] == ' ':
+            tablero[pos[0] + numero_casillas][pos[1]] = R
+            tablero[pos[0]][pos[1]] = ' '
+        else: 
+            return 'Movimiento no válido'
     else:
-        print('Movimiento no válido')
+        return 'Movimiento no válido'
     return tablero
 
-print(seleccionar_torre_negra(colocar_torre()))
+def movimiento_torre_blanca():
+    n = pedir_numero('elegir el tamaño del tablero')
+    tablero = colocar_torre(n)
+    print(tablero)
+    torre = seleccionar_torre_blanca(tablero)
+    numero_casillas = pedir_numero("mover la torre")
+    h = torre[0]
+    v = torre[1]
+    pos = [h, v]
+    if pos[0] + numero_casillas < n:
+        if tablero[pos[0]+numero_casillas][pos[1]] == ' ':
+            tablero[pos[0] + numero_casillas][pos[1]] = R
+            tablero[pos[0]][pos[1]] = ' '
+        else: 
+            return 'Movimiento no válido'
+    else:
+        return 'Movimiento no válido'
+    return tablero
+
+
+def movimiento_torre_negra():
+    n = pedir_numero('elegir el tamaño del tablero')
+    tablero = colocar_torre(n)
+    print(tablero)
+    torre = seleccionar_torre_negra(tablero)
+    numero_casillas = pedir_numero("mover la torre")
+    h = torre[0]
+    v = torre[1]
+    pos = [h, v]
+    if pos[0] + numero_casillas < n:
+        if tablero[pos[0]+numero_casillas][pos[1]] == ' ':
+            tablero[pos[0] + numero_casillas][pos[1]] = r
+            tablero[pos[0]][pos[1]] = ' '
+        else: 
+            return 'Movimiento no válido'
+    else:
+        return 'Movimiento no válido'
+    return tablero
+
+print(movimiento_torre_blanca())
+
+#Hasta aqui de momento funciona
